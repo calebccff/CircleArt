@@ -1,4 +1,4 @@
-int num = 5;
+int num = 15;
 
 Circle[] circles = new Circle[num];
 
