@@ -15,15 +15,18 @@ void setup(){
 void draw(){
   background(20, 25, 20);
   for(int i = 0; i < num; i++){
-    for(int j = 0; j < num; j++){
-      if(circles[j] != circles[i] && j%10==0){
-        noFill();
-        stroke(175);
-        float cx1 = lerp(circles[i].x, circles[j].x, rnoise(j*1000, 0.2, 0.5))+rnoise(j*1000, -50, 50), cy1 = lerp(circles[i].y, circles[j].y, rnoise(j*1000, 0.2, 0.5))+rnoise(j*1000, -50, 50), cx2 = lerp(circles[i].y, circles[j].y, rnoise(j*1000, 0.5, 0.8))+rnoise(j*1000, -50, 50), cy2 = lerp(circles[i].y, circles[j].y, rnoise(j*1000, 0.5, 0.8))+rnoise(j*1000, -50, 50);
-        curve(cx1, cy1, circles[i].x, circles[i].y, circles[j].x, circles[j].y, cx2, cy2);
-      }
-    }
+    noFill();
+    stroke(175);
     circles[i].display();
+  }
+  for(int i = 0; i < num; i++){
+    noFill();
+    stroke(175);
+    try{
+      line(circles[i].x, circles[i].y, circles[i+1].x, circles[i+1].y);
+    }catch(Exception e){
+      line(circles[i].x, circles[i].y, circles[0].x, circles[0].y);
+    }
   }
 }
 
